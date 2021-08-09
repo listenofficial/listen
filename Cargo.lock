@@ -1342,28 +1342,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "dao"
-version = "1.0.0"
-dependencies = [
- "frame-benchmarking",
- "frame-support",
- "frame-system",
- "hex-literal",
- "ico",
- "listen-traits",
- "log",
- "orml-traits",
- "pallet-balances",
- "pallet-timestamp",
- "parity-scale-codec",
- "serde",
- "sp-core",
- "sp-io",
- "sp-runtime",
- "sp-std",
-]
-
-[[package]]
 name = "data-encoding"
 version = "2.3.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2760,24 +2738,6 @@ dependencies = [
  "tokio 0.2.25",
  "tokio-rustls 0.14.1",
  "webpki",
-]
-
-[[package]]
-name = "ico"
-version = "0.1.0"
-dependencies = [
- "currencies",
- "frame-support",
- "frame-system",
- "orml-tokens",
- "orml-traits",
- "pallet-balances",
- "parity-scale-codec",
- "primitive-types",
- "sp-core",
- "sp-io",
- "sp-runtime",
- "sp-std",
 ]
 
 [[package]]
@@ -4443,7 +4403,6 @@ name = "node-runtime"
 version = "2.0.1"
 dependencies = [
  "currencies",
- "dao",
  "frame-benchmarking",
  "frame-election-provider-support",
  "frame-executive",
@@ -4453,7 +4412,6 @@ dependencies = [
  "frame-system-rpc-runtime-api",
  "frame-try-runtime",
  "hex-literal",
- "ico",
  "listen-constants",
  "listen-primitives",
  "log",
