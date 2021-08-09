@@ -1,0 +1,43 @@
+[package]
+name = "pallet-transfer"
+version = "1.0.0"
+authors = ["transxask <orwx71@163.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+
+# substrate
+frame-support = { default-features = false,  git = 'https://github.com/paritytech/substrate', branch = 'polkadot-v0.9.8' }
+frame-system = { default-features = false,  git = 'https://github.com/paritytech/substrate', branch = 'polkadot-v0.9.8' }
+pallet-balances = { default-features = false,  git = 'https://github.com/paritytech/substrate', branch = 'polkadot-v0.9.8' }
+
+sp-runtime = { default-features = false,  git = 'https://github.com/paritytech/substrate', branch = 'polkadot-v0.9.8' }
+sp-std = { default-features = false,  git = 'https://github.com/paritytech/substrate', branch = 'polkadot-v0.9.8' }
+codec = { package = "parity-scale-codec", version = "2.0.0", default-features = false, features = ["derive"] }
+
+# local
+listen-primitives = { path = '../../primitives', default-features = false, version = '1.0.0' }
+currencies = { path = '../currencies', default-features = false, version = '0.1.0'}
+
+# orml
+orml-traits = { git = 'https://github.com/open-web3-stack/open-runtime-module-library.git', default-features = false, version = '0.4.1-dev' }
+orml-tokens = { git = 'https://github.com/open-web3-stack/open-runtime-module-library.git', default-features = false, version = '0.4.1-dev' }
+#orml-currencies = { git = 'https://github.com/open-web3-stack/open-runtime-module-library.git', default-features = false, version = '0.4.1-dev' }
+
+[features]
+default = ["std"]
+std = [
+    "currencies/std",
+    "frame-support/std",
+    "frame-system/std",
+    "pallet-balances/std",
+    "sp-runtime/std",
+    "sp-std/std",
+    "codec/std",
+    "orml-traits/std",
+    "orml-tokens/std",
+    "listen-primitives/std",
+#    "pallet-listen/std",
+]

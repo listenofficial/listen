@@ -1,0 +1,53 @@
+[package]
+name = "dao"
+version = "1.0.0"
+authors = ["transxask <orwx71@163.com>"]
+edition = "2018"
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+
+[dependencies]
+serde = { version = "1.0.101", optional = true }
+codec = { package = "parity-scale-codec", version = "2.0.0", default-features = false, features = ["derive"] }
+sp-core = {  default-features = false, git = 'https://github.com/paritytech/substrate', branch = 'polkadot-v0.9.8' }
+sp-std = {  default-features = false, git = 'https://github.com/paritytech/substrate', branch = 'polkadot-v0.9.8' }
+sp-io = {  default-features = false, git = 'https://github.com/paritytech/substrate', branch = 'polkadot-v0.9.8' }
+sp-runtime = {  default-features = false, git = 'https://github.com/paritytech/substrate', branch = 'polkadot-v0.9.8' }
+frame-benchmarking = {  default-features = false, git = 'https://github.com/paritytech/substrate', branch = 'polkadot-v0.9.8', optional = true }
+frame-support = {  default-features = false, git = 'https://github.com/paritytech/substrate', branch = 'polkadot-v0.9.8' }
+frame-system = {  default-features = false, git = 'https://github.com/paritytech/substrate', branch = 'polkadot-v0.9.8' }
+log = { version = "0.4.14", default-features = false }
+listen-traits = { path = '../../traits', default-features = false, version = '1.0.0' }
+pallet-timestamp = { default-features = false, version = '3.0.0', git = 'https://github.com/paritytech/substrate', branch = 'polkadot-v0.9.8' }
+ico = { path = "../ico", default-features = false, version = "0.1.0"}
+orml-traits = { git = 'https://github.com/open-web3-stack/open-runtime-module-library.git', default-features = false, version = '0.4.1-dev' }
+
+
+[dev-dependencies]
+hex-literal = "0.3.1"
+pallet-balances = {  git = 'https://github.com/paritytech/substrate', branch = 'polkadot-v0.9.8' }
+
+[features]
+default = ["std"]
+std = [
+	"orml-traits/std",
+	"ico/std",
+	"codec/std",
+	"sp-core/std",
+	"sp-std/std",
+	"serde",
+	"sp-io/std",
+	"frame-support/std",
+	"sp-runtime/std",
+	"frame-system/std",
+	"log/std",
+	"listen-traits/std",
+	"pallet-timestamp/std",
+]
+runtime-benchmarks = [
+	"frame-benchmarking",
+	"sp-runtime/runtime-benchmarks",
+	"frame-system/runtime-benchmarks",
+]
+try-runtime = ["frame-support/try-runtime"]

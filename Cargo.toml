@@ -1,0 +1,17 @@
+[profile.release]
+panic = 'unwind'
+[workspace]
+members = [
+
+    "cli",
+    "executor",
+    "inspect",
+    "primitives",
+    "rpc",
+    "rpc-client",
+    "common/constants",
+    "common/pallets/*",
+    "common/primitives",
+    "common/traits",
+
+]

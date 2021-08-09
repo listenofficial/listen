@@ -1,0 +1,8 @@
+# 启动对外开放rpc的节点
+./Listen --chain  customspec.json --execution=NativeElseWasm  --unsafe-ws-external --unsafe-rpc-external  --rpc-cors=all --ws-port 9944 --base-path db --rpc-methods=Unsafe  --pool-limit 100000 --ws-max-connections 50000
+
+./Listen build-spec --chain=dev > localspec.json
+./Listen build-spec --chain localspec.json --raw > customspec.json
+
+# 种子节点启动
+./Listen --name WJY-ALIYUN-9947 --ws-port 9947 --base-path db --unsafe-ws-external --unsafe-rpc-external  --rpc-cors=all --port 30334 --rpc-port 9933 --node-key e5be9a5092b81bca64be81d212e7f2f9eba183bb7a90954f7b76361f6edb5c0a  --alice --execution NativeElseWasm --rpc-methods Unsafe -lruntime=debug

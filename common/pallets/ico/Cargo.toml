@@ -1,0 +1,44 @@
+[package]
+name = "ico"
+version = "0.1.0"
+authors = ["Irish-bee <rizhong518840@163.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+primitive-types = { version = "0.9.1", default-features = false}
+
+frame-support = { default-features = false,  git = 'https://github.com/paritytech/substrate', branch = 'polkadot-v0.9.8' }
+frame-system = { default-features = false,  git = 'https://github.com/paritytech/substrate', branch = 'polkadot-v0.9.8' }
+
+sp-runtime = { default-features = false,  git = 'https://github.com/paritytech/substrate', branch = 'polkadot-v0.9.8' }
+sp-std = { default-features = false,  git = 'https://github.com/paritytech/substrate', branch = 'polkadot-v0.9.8' }
+codec = { package = "parity-scale-codec", version = "2.0.0", default-features = false, features = ["derive"] }
+sp-core = {  default-features = false, git = 'https://github.com/paritytech/substrate', branch = 'polkadot-v0.9.8' }
+sp-io = {  default-features = false, git = 'https://github.com/paritytech/substrate', branch = 'polkadot-v0.9.8' }
+pallet-balances = {  default-features = false, git = 'https://github.com/paritytech/substrate', branch = 'polkadot-v0.9.8' }
+
+# orml
+orml-traits = { git = 'https://github.com/open-web3-stack/open-runtime-module-library.git', default-features = false, version = '0.4.1-dev' }
+orml-tokens = { git = 'https://github.com/open-web3-stack/open-runtime-module-library.git', default-features = false, version = '0.4.1-dev' }
+#orml-currencies = { git = 'https://github.com/open-web3-stack/open-runtime-module-library.git', default-features = false, version = '0.4.1-dev' }
+currencies = { path = '../currencies', default-features = false, version = '0.1.0'}
+
+
+[features]
+default = ['std']
+std = [
+    "frame-support/std",
+    "frame-system/std",
+    "sp-runtime/std",
+    "sp-std/std",
+    "codec/std",
+    "orml-traits/std",
+    "orml-tokens/std",
+#    "orml-currencies/std",
+    "currencies/std",
+    "sp-core/std",
+    "pallet-balances/std",
+    "primitive-types/std",
+]
