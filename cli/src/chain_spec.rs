@@ -414,7 +414,7 @@ pub fn local_testnet_config() -> ChainSpec {
 
 fn get_properties() -> Option<Properties> {
 	let mut p = Properties::new();
-	p.insert("tokenSymbol".into(), "Dico".into());
+	p.insert("tokenSymbol".into(), "Listen".into());
 	p.insert("tokenDecimals".into(), 14.into());
 	Some(p)
 
