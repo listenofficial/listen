@@ -92,9 +92,6 @@ use impls::Author;
 // use constants::{time::*, currency::*};
 use sp_runtime::generic::Era;
 
-// myself use
-// use ico::{self, IcoMultiple, CurrencyIds};
-// use dao;
 use pallet_transfer;
 use pallet_listen_vesting;
 pub use listen_primitives::{self as node_primitives, BlockNumber, Signature, AccountId, AccountIndex, Balance, Index, Hash, Amount, DigestItem, CurrencyId, Moment};
@@ -1333,56 +1330,6 @@ impl pallet_room_collective::Config<RoomCollective> for Runtime {
 	type ListenHandler = Listen;
 }
 
-// parameter_types! {
-// 	pub const DicoMotionDuration: BlockNumber = 5 * DAYS;
-// 	pub const DicoMaxProposals: u32 = 100;
-// }
-//
-// impl dao::Config for Runtime {
-// 	type Origin = Origin;
-// 	type Proposal = Call;
-// 	type Event = Event;
-// 	type MotionDuration = DicoMotionDuration;
-// 	type MaxProposals = DicoMaxProposals;
-// 	type WeightInfo = ();
-// 	type IcoHandler = Ico;
-// }
-
-// parameter_types! {
-// 	pub const InitiatorPledge: Balance = 100 * DOLLARS;
-//
-// 	pub const RequestPledge: Balance = 300 * DOLLARS;
-//
-// 	pub const NativeMultiple: IcoMultiple = IcoMultiple {
-// 		numerator: 20u32,
-// 		denominator: 10u32,
-// 	};
-// 	pub const RequestExpire: BlockNumber = 5 * DAYS;
-// 	pub const MinProportion: Percent = Percent::from_percent(60u8);
-// 	pub const IcoTotalReward: Balance = 20_0000_0000 * DOLLARS;  // 20 亿个dico用于ico奖励
-//
-// }
-
-// impl ico::Config for Runtime {
-// 	type Event = Event;
-// 	type PermitIcoOrigin = pallet_collective::EnsureProportionAtLeast<_1, _2, AccountId, CouncilCollective>;
-// 	type RejectIcoOrigin = pallet_collective::EnsureProportionAtLeast<_1, _2, AccountId, CouncilCollective>;
-// 	type PermitReleaseOrigin = dao::EnsureProportionAtLeast<Runtime, _1, _2, AccountId>;
-// 	type TerminateIcoOrigin = dao::EnsureProportionAtLeast<Runtime, _1, _2, AccountId>;
-//
-// 	type MinProportion = MinProportion;
-// 	type OnSlash = ();
-// 	type MultiCurrency = Currencies;
-// 	type NativeCurrency = Balances;
-// 	type GetNativeCurrencyId = GetNativeCurrencyId;
-// 	type InitiatorPledge = InitiatorPledge;
-// 	type RequestPledge = RequestPledge;
-// 	type RequestExpire = RequestExpire;
-// 	type NativeMultiple = NativeMultiple;
-// 	type CurrenciesHandler = Currencies;
-// 	type IcoTotalReward = IcoTotalReward;
-// }
-
 
 impl pallet_listen_vesting::Config for Runtime {
 	type Event = Event;
@@ -1443,8 +1390,6 @@ construct_runtime!(
 		ListenVesting: pallet_listen_vesting::{Pallet, Call, Storage, Event<T>, Config<T>},
 		Tokens: orml_tokens::{Pallet, Config<T>, Storage, Event<T>},
 		Currencies: dico_currencies::{Pallet, Event<T>, Call, Storage},
-		// Ico: ico::{Pallet, Event<T>, Call, Storage},
-		// Dao: dao::{Pallet, Origin<T>, Event<T>, Call, Storage},
 		Transfer: pallet_transfer::{Pallet, Call, Event<T>},
 		Nicks: pallet_nicks::{Pallet, Storage, Call, Event<T>},
 		RoomCommittee: pallet_room_collective::<Instance1>::{Pallet, Call, Storage, Origin<T>, Event<T>},

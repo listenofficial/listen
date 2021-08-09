@@ -101,8 +101,6 @@ pallet-room-collective = { path = '../common/pallets/room-collective', default-f
 pallet-room-treasury = { path = '../common/pallets/room-treasury', default-features = false, version = '1.0.0' }
 listen-constants = { path = '../common/constants', version = '1.0.0', default-features = false }
 
-#ico = { path = '../common/pallets/ico', default-features = false, version = '0.1.0' }
-#dao = { path = '../common/pallets/dao', default-features = false, version = '1.0.0' }
 currencies = { path = '../common/pallets/currencies', default-features = false, version = '0.1.0' }
 
 # orml
@@ -185,8 +183,6 @@ std = [
 	"sp-npos-elections/std",
 	"max-encoded-len/std",
 
-#	"ico/std",
-#	"dao/std",
 	"pallet-listen/std",
 	"pallet-transfer/std",
 	"pallet-listen-vesting/std",
