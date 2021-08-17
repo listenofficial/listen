@@ -1220,7 +1220,7 @@ impl listen::Config for Runtime{
 	type PalletId = TreasuryPalletId;
 	type AirDropAmount = AirDropAmount;
 	type GetNativeCurrencyId = GetNativeCurrencyId;
-	type ProtectTime = ProtectTime;
+	type ProtectedDuration = ProtectTime;
 	type CouncilMaxNumber = CouncilMaxNumber;
 	type CollectiveHandler = RoomCommittee;
 
@@ -1228,7 +1228,7 @@ impl listen::Config for Runtime{
 	type RoomRootOrHalfCouncilOrigin = RoomRootOrHalfRoomCouncil;
 	type RoomRootOrHalfRoomCouncilOrSomeRoomCouncilOrigin = RoomRootOrHalfRoomCouncilOrSomeRoomCouncil;
 	type HalfRoomCouncilOrigin = HalfRoomCouncil;
-	type DisbandDelayTime = DisbandDelayTime;
+	type DelayDisbandDuration = DisbandDelayTime;
 	type RoomTreasuryHandler = RoomTreasury;
 
 }
