@@ -122,7 +122,7 @@
       "NoLimit"
     ]
   },
-  "VoteType": {
+  "ListenVote": {
     "_enum": [
       "Approve",
       "Reject"
@@ -166,19 +166,6 @@
     "council": "Vec<(AccountId, Balance)>",
     "black_list": "Vec<AccountId>",
     "is_private": "bool"
-  },
-  "InvitePaymentType": {
-    "_enum": [
-      "inviter_pay",
-      "invitee_pay"
-    ]
-  },
-  "ListenerType": {
-    "_enum": [
-      "group_manager",
-      "common",
-      "honored_guest"
-    ]
   },
   "PersonInfo": {
     "props": "AllProps",
