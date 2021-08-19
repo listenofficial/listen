@@ -135,7 +135,7 @@
       "Expire"
     ]
   },
-  "RoomCollectiveVotes": {
+  "ListenDaoVotes": {
     "index": "u32",
     "reason": "Option<Vec<u8>>",
     "threshold": "u32",

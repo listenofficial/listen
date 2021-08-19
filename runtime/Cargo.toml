@@ -94,10 +94,9 @@ max-encoded-len = {  default-features = false, git = 'https://github.com/parityt
 # listen-parachain
 listen-primitives = { path = '../common/primitives', version = '1.0.0', default-features = false }
 pallet-listen = { path = '../common/pallets/listen', default-features = false, version = '1.0.0' }
-pallet-transfer = { path = '../common/pallets/transfer', default-features = false, version = '1.0.0' }
 pallet-listen-vesting = { path = '../common/pallets/listen-vesting', default-features = false, version = '1.0.0' }
 pallet-nicks = { path = '../common/pallets/nicks', default-features = false, version = '1.0.0' }
-pallet-room-collective = { path = '../common/pallets/room-collective', default-features = false, version = '1.0.0' }
+pallet-dao = { path = '../common/pallets/dao', default-features = false, version = '3.0.0' }
 pallet-room-treasury = { path = '../common/pallets/room-treasury', default-features = false, version = '1.0.0' }
 listen-constants = { path = '../common/constants', version = '1.0.0', default-features = false }
 
@@ -184,12 +183,11 @@ std = [
 	"max-encoded-len/std",
 
 	"pallet-listen/std",
-	"pallet-transfer/std",
 	"pallet-listen-vesting/std",
 	"orml-traits/std",
 	"orml-tokens/std",
 	"pallet-nicks/std",
-	"pallet-room-collective/std",
+	"pallet-dao/std",
 	"pallet-room-treasury/std",
 	"listen-primitives/std",
 	"currencies/std",

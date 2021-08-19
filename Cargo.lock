@@ -4428,6 +4428,7 @@ dependencies = [
  "pallet-contracts",
  "pallet-contracts-primitives",
  "pallet-contracts-rpc-runtime-api",
+ "pallet-dao",
  "pallet-democracy",
  "pallet-election-provider-multi-phase",
  "pallet-elections-phragmen",
@@ -4448,7 +4449,6 @@ dependencies = [
  "pallet-proxy",
  "pallet-randomness-collective-flip",
  "pallet-recovery",
- "pallet-room-collective",
  "pallet-room-treasury",
  "pallet-scheduler",
  "pallet-session",
@@ -4462,7 +4462,6 @@ dependencies = [
  "pallet-transaction-payment",
  "pallet-transaction-payment-rpc-runtime-api",
  "pallet-transaction-storage",
- "pallet-transfer",
  "pallet-treasury",
  "pallet-uniques",
  "pallet-utility",
@@ -4892,6 +4891,26 @@ dependencies = [
 ]
 
 [[package]]
+name = "pallet-dao"
+version = "3.0.0"
+dependencies = [
+ "frame-benchmarking",
+ "frame-support",
+ "frame-system",
+ "hex-literal",
+ "listen-traits",
+ "log",
+ "pallet-balances",
+ "pallet-timestamp",
+ "parity-scale-codec",
+ "serde",
+ "sp-core",
+ "sp-io",
+ "sp-runtime",
+ "sp-std",
+]
+
+[[package]]
 name = "pallet-democracy"
 version = "3.0.0"
 source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.9.8#74101dc21cfffb4c2d014fcc28edc166d5ca1b16"
@@ -5259,26 +5278,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "pallet-room-collective"
-version = "1.0.0"
-dependencies = [
- "frame-benchmarking",
- "frame-support",
- "frame-system",
- "hex-literal",
- "listen-traits",
- "log",
- "pallet-balances",
- "pallet-timestamp",
- "parity-scale-codec",
- "serde",
- "sp-core",
- "sp-io",
- "sp-runtime",
- "sp-std",
-]
-
-[[package]]
 name = "pallet-room-treasury"
 version = "1.0.0"
 dependencies = [
@@ -5504,22 +5503,6 @@ dependencies = [
  "sp-runtime",
  "sp-std",
  "sp-transaction-storage-proof",
-]
-
-[[package]]
-name = "pallet-transfer"
-version = "1.0.0"
-dependencies = [
- "currencies",
- "frame-support",
- "frame-system",
- "listen-primitives",
- "orml-tokens",
- "orml-traits",
- "pallet-balances",
- "parity-scale-codec",
- "sp-runtime",
- "sp-std",
 ]
 
 [[package]]

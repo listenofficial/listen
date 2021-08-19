@@ -92,7 +92,6 @@ use impls::Author;
 // use constants::{time::*, currency::*};
 use sp_runtime::generic::Era;
 
-use pallet_transfer;
 use pallet_listen_vesting;
 pub use listen_primitives::{self as node_primitives, BlockNumber, Signature, AccountId, AccountIndex, Balance, Index, Hash, Amount, DigestItem, CurrencyId, Moment};
 pub use listen_constants::{time::*, currency::*};
@@ -103,9 +102,9 @@ pub use orml_tokens;
 use orml_traits::*;
 use frame_system::{self, Config};
 use sp_runtime::traits::{Convert, Zero};
-use currencies::{self as dico_currencies, BasicCurrencyAdapter};
+use currencies::{self as listen_currencies, BasicCurrencyAdapter};
 use pallet_nicks;
-use pallet_room_collective;
+use pallet_dao;
 use sp_npos_elections;
 use pallet_balances::AccountData as SubAccountData;
 
@@ -288,7 +287,7 @@ impl InstanceFilter<Call> for ProxyType {
 			ProxyType::Any => true,
 			ProxyType::NonTransfer => !matches!(
 				c,
-				Call::Balances(..) |
+				// Call::Balances(..) |
 				Call::Assets(..) |
 				Call::Uniques(..) |
 				Call::Vesting(pallet_vesting::Call::vested_transfer(..)) |
@@ -1180,16 +1179,16 @@ parameter_types! {
 
 }
 
-type HalfRoomCouncil = pallet_room_collective::EnsureProportionMoreThan<_1, _2, AccountId, RoomCollective>;
+type HalfRoomCouncil = pallet_dao::EnsureProportionMoreThan<_1, _2, AccountId, RoomCollective>;
 
-type RoomRoot = pallet_room_collective::EnsureRoomRoot<Runtime, AccountId, RoomCollective>;
+type RoomRoot = pallet_dao::EnsureRoomRoot<Runtime, AccountId, RoomCollective>;
 
 type RoomRootOrHalfRoomCouncil = EnsureOneOf<
 	AccountId,
 	RoomRoot,
 	HalfRoomCouncil
 >;
-type SomeCouncil = pallet_room_collective::EnsureMembers<_2, AccountId, RoomCollective>;
+type SomeCouncil = pallet_dao::EnsureMembers<_2, AccountId, RoomCollective>;
 type HalfRoomCouncilOrSomeRoomCouncil = EnsureOneOf<
 	AccountId,
 	HalfRoomCouncil,
@@ -1222,7 +1221,7 @@ impl listen::Config for Runtime{
 	type GetNativeCurrencyId = GetNativeCurrencyId;
 	type ProtectedDuration = ProtectTime;
 	type CouncilMaxNumber = CouncilMaxNumber;
-	type CollectiveHandler = RoomCommittee;
+	type CollectiveHandler = Dao;
 
 	type RoomRootOrigin = RoomRoot;
 	type RoomRootOrHalfCouncilOrigin = RoomRootOrHalfRoomCouncil;
@@ -1259,7 +1258,7 @@ parameter_types! {
 	pub const GetNativeCurrencyId: u32 = 0;
 }
 
-impl dico_currencies::Config for Runtime {
+impl listen_currencies::Config for Runtime {
 	type Event = Event;
 	type MultiCurrency = Tokens;
 
@@ -1269,11 +1268,8 @@ impl dico_currencies::Config for Runtime {
 
 	type WeightInfo = ();
 
-}
-
-impl pallet_transfer::Config for Runtime {
-	type Event = Event;
 	type AirDropAmount = AirDropAmount;
+
 }
 
 parameter_types! {
@@ -1314,19 +1310,17 @@ impl pallet_nicks::Config for Runtime {
 parameter_types! {
 	pub const RoomMotionDuration: BlockNumber = 5 * DAYS;
 	pub const RoomMaxProposals: u32 = 100;
-	pub const RoomMaxMembers: u32 = 100;
 }
 
-type RoomCollective = pallet_room_collective::Instance1;
-impl pallet_room_collective::Config<RoomCollective> for Runtime {
+type RoomCollective = pallet_dao::Instance1;
+impl pallet_dao::Config<RoomCollective> for Runtime {
 	type Origin = Origin;
 	type Proposal = Call;
 	type Event = Event;
 	type MotionDuration = RoomMotionDuration;
 	type MaxProposals = RoomMaxProposals;
-	type MaxMembers = RoomMaxMembers;
-	type DefaultVote = pallet_room_collective::PrimeDefaultVote;
-	type WeightInfo = pallet_room_collective::weights::SubstrateWeight<Runtime>;
+	type DefaultVote = pallet_dao::PrimeDefaultVote;
+	type WeightInfo = pallet_dao::weights::SubstrateWeight<Runtime>;
 	type ListenHandler = Listen;
 }
 
@@ -1351,7 +1345,7 @@ construct_runtime!(
 		Timestamp: pallet_timestamp::{Pallet, Call, Storage, Inherent},
 		Authorship: pallet_authorship::{Pallet, Call, Storage, Inherent},
 		Indices: pallet_indices::{Pallet, Call, Storage, Config<T>, Event<T>},
-		Balances: pallet_balances::{Pallet, Call, Storage, Config<T>, Event<T>},
+		Balances: pallet_balances::{Pallet, Storage, Config<T>, Event<T>},
 		TransactionPayment: pallet_transaction_payment::{Pallet, Storage},
 		ElectionProviderMultiPhase: pallet_election_provider_multi_phase::{Pallet, Call, Storage, Event<T>, ValidateUnsigned},
 		Staking: pallet_staking::{Pallet, Call, Config<T>, Storage, Event<T>},
@@ -1389,10 +1383,9 @@ construct_runtime!(
 		Listen: listen::{Pallet, Storage, Call, Event<T>},
 		ListenVesting: pallet_listen_vesting::{Pallet, Call, Storage, Event<T>, Config<T>},
 		Tokens: orml_tokens::{Pallet, Config<T>, Storage, Event<T>},
-		Currencies: dico_currencies::{Pallet, Event<T>, Call, Storage},
-		Transfer: pallet_transfer::{Pallet, Call, Event<T>},
+		Currencies: listen_currencies::{Pallet, Event<T>, Call, Storage},
 		Nicks: pallet_nicks::{Pallet, Storage, Call, Event<T>},
-		RoomCommittee: pallet_room_collective::<Instance1>::{Pallet, Call, Storage, Origin<T>, Event<T>},
+		Dao: pallet_dao::<Instance1>::{Pallet, Call, Storage, Origin<T>, Event<T>},
 		RoomTreasury: pallet_room_treasury::{Pallet, Storage, Call, Event<T>},
 	}
 );

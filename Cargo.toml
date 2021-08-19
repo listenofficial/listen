@@ -2,7 +2,6 @@
 panic = 'unwind'
 [workspace]
 members = [
-
     "cli",
     "executor",
     "inspect",
