@@ -4203,11 +4203,11 @@ dependencies = [
  "futures 0.3.16",
  "hex-literal",
  "libp2p-wasm-ext",
+ "listen-primitives",
  "log",
  "nix",
  "node-executor",
  "node-inspect",
- "node-primitives",
  "node-rpc",
  "node-runtime",
  "pallet-authority-discovery",
@@ -4282,7 +4282,7 @@ dependencies = [
  "frame-support",
  "frame-system",
  "futures 0.3.16",
- "node-primitives",
+ "listen-primitives",
  "node-runtime",
  "pallet-balances",
  "pallet-contracts",
@@ -4325,24 +4325,11 @@ dependencies = [
 ]
 
 [[package]]
-name = "node-primitives"
-version = "2.0.0"
-dependencies = [
- "frame-system",
- "parity-scale-codec",
- "pretty_assertions",
- "sp-application-crypto",
- "sp-core",
- "sp-runtime",
- "sp-serializer 3.0.0 (git+https://github.com/paritytech/substrate?branch=polkadot-v0.9.8)",
-]
-
-[[package]]
 name = "node-rpc"
 version = "2.0.0"
 dependencies = [
  "jsonrpc-core",
- "node-primitives",
+ "listen-primitives",
  "pallet-contracts-rpc",
  "pallet-mmr-rpc",
  "pallet-transaction-payment-rpc",
@@ -4375,8 +4362,8 @@ dependencies = [
  "futures 0.1.31",
  "hyper 0.12.36",
  "jsonrpc-core-client",
+ "listen-primitives",
  "log",
- "node-primitives",
  "sc-rpc",
  "sp-tracing",
 ]

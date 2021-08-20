@@ -15,6 +15,6 @@ futures = "0.1.29"
 hyper = "~0.12.35"
 jsonrpc-core-client = { version = "15.1.0", default-features = false, features = ["http"]}
 log = "0.4.8"
-node-primitives = {  path = "../primitives" }
+node-primitives = {  path = "../common/primitives", package = "listen-primitives"}
 sp-tracing = {  git = 'https://github.com/paritytech/substrate', branch = 'polkadot-v0.9.8' }
 sc-rpc = {  git = 'https://github.com/paritytech/substrate', branch = 'polkadot-v0.9.8' }

@@ -5,7 +5,6 @@ members = [
     "cli",
     "executor",
     "inspect",
-    "primitives",
     "rpc",
     "rpc-client",
     "common/constants",

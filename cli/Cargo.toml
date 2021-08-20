@@ -91,7 +91,7 @@ pallet-grandpa = {  git = 'https://github.com/paritytech/substrate', branch = 'p
 # node-specific dependencies
 node-runtime = { path = "../runtime" }
 node-rpc = {  path = "../rpc" }
-node-primitives = {  path = "../primitives" }
+node-primitives = {  path = "../common/primitives", package = "listen-primitives"}
 node-executor = {  path = "../executor" }
 
 # CLI-specific dependencies
