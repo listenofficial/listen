@@ -100,7 +100,7 @@ pub use orml_tokens;
 use orml_traits::*;
 use frame_system::{self, Config};
 use sp_runtime::traits::{Convert, Zero};
-use currencies::{self as listen_currencies, BasicCurrencyAdapter};
+use pallet_currencies::{BasicCurrencyAdapter};
 use pallet_nicks;
 use pallet_dao;
 use sp_npos_elections;
@@ -1249,7 +1249,7 @@ parameter_types! {
 	pub const GetNativeCurrencyId: u32 = 0;
 }
 
-impl listen_currencies::Config for Runtime {
+impl pallet_currencies::Config for Runtime {
 	type Event = Event;
 	type MultiCurrency = Tokens;
 
@@ -1284,17 +1284,18 @@ impl pallet_room_treasury::Config for Runtime {
 parameter_types! {
 	pub const MinLength: usize = 3;
 	pub const MaxLength: usize = 10;
-	pub const ReservationFee: Balance = 1*DOLLARS;
+	pub const NameFee: Balance = 1*DOLLARS;
 }
 
 impl pallet_nicks::Config for Runtime {
 	type Event = Event;
 	type NicksCurrency = Balances;
-	type ReservationFee = ReservationFee;
+	type NameFee = NameFee;
 	type Slashed = ();
 	type ForceOrigin = EnsureRoot<AccountId>;
 	type MinLength = MinLength;
 	type MaxLength = MaxLength;
+	type TreasuryPalletId = TreasuryPalletId;
 
 }
 
@@ -1372,7 +1373,7 @@ construct_runtime!(
 		// **************************************
 		Listen: listen::{Pallet, Storage, Call, Event<T>},
 		Tokens: orml_tokens::{Pallet, Config<T>, Storage, Event<T>},
-		Currencies: listen_currencies::{Pallet, Event<T>, Call, Storage},
+		Currencies: pallet_currencies::{Pallet, Event<T>, Call, Storage},
 		Nicks: pallet_nicks::{Pallet, Storage, Call, Event<T>},
 		Dao: pallet_dao::<Instance1>::{Pallet, Call, Storage, Origin<T>, Event<T>},
 		RoomTreasury: pallet_room_treasury::{Pallet, Storage, Call, Event<T>},

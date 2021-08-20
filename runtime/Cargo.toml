@@ -98,7 +98,7 @@ pallet-dao = { path = '../common/pallets/dao', default-features = false, version
 pallet-room-treasury = { path = '../common/pallets/room-treasury', default-features = false, version = '1.0.0' }
 listen-constants = { path = '../common/constants', version = '1.0.0', default-features = false }
 
-currencies = { path = '../common/pallets/currencies', default-features = false, version = '0.1.0' }
+pallet_currencies = { path = '../common/pallets/currencies', default-features = false, version = '3.0.0' }
 
 # orml
 orml-traits = { git = 'https://github.com/open-web3-stack/open-runtime-module-library.git', default-features = false, version = '0.4.1-dev' }
@@ -187,7 +187,7 @@ std = [
 	"pallet-dao/std",
 	"pallet-room-treasury/std",
 	"listen-primitives/std",
-	"currencies/std",
+	"pallet_currencies/std",
 	"listen-constants/std",
 
 ]

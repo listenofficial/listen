@@ -1299,23 +1299,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "currencies"
-version = "0.1.0"
-dependencies = [
- "frame-support",
- "frame-system",
- "orml-tokens",
- "orml-traits",
- "pallet-balances",
- "parity-scale-codec",
- "serde",
- "sp-core",
- "sp-io",
- "sp-runtime",
- "sp-std",
-]
-
-[[package]]
 name = "curve25519-dalek"
 version = "2.1.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -4402,7 +4385,6 @@ dependencies = [
 name = "node-runtime"
 version = "2.0.1"
 dependencies = [
- "currencies",
  "frame-benchmarking",
  "frame-election-provider-support",
  "frame-executive",
@@ -4465,6 +4447,7 @@ dependencies = [
  "pallet-uniques",
  "pallet-utility",
  "pallet-vesting",
+ "pallet_currencies",
  "parity-scale-codec",
  "sp-api",
  "sp-authority-discovery",
@@ -5547,6 +5530,23 @@ dependencies = [
  "sp-runtime",
  "sp-std",
  "sp-storage",
+]
+
+[[package]]
+name = "pallet_currencies"
+version = "3.0.0"
+dependencies = [
+ "frame-support",
+ "frame-system",
+ "orml-tokens",
+ "orml-traits",
+ "pallet-balances",
+ "parity-scale-codec",
+ "serde",
+ "sp-core",
+ "sp-io",
+ "sp-runtime",
+ "sp-std",
 ]
 
 [[package]]
