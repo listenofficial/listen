@@ -25,7 +25,7 @@ use node_runtime::{
 	AuthorityDiscoveryConfig, BabeConfig, BalancesConfig, CouncilConfig,
 	DemocracyConfig, GrandpaConfig, ImOnlineConfig, SessionConfig, SessionKeys, StakerStatus,
 	StakingConfig, ElectionsConfig, IndicesConfig, SocietyConfig, SudoConfig, SystemConfig,
-	TechnicalCommitteeConfig, wasm_binary_unwrap, MAX_NOMINATIONS, TokensConfig, ListenVestingConfig,
+	TechnicalCommitteeConfig, wasm_binary_unwrap, MAX_NOMINATIONS, TokensConfig,
 };
 
 // myself use
@@ -343,12 +343,11 @@ pub fn testnet_genesis(
 			pot: 0,
 			max_members: 999,
 		},
-		vesting: Default::default(),
 		gilt: Default::default(),
 		transaction_storage: Default::default(),
 
 		tokens: Default::default(),
-		listen_vesting: Default::default(),
+		vesting: Default::default(),
 	}
 }
 

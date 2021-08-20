@@ -91,8 +91,6 @@ use impls::Author;
 // pub mod constants;
 // use constants::{time::*, currency::*};
 use sp_runtime::generic::Era;
-
-use pallet_listen_vesting;
 pub use listen_primitives::{self as node_primitives, BlockNumber, Signature, AccountId, AccountIndex, Balance, Index, Hash, Amount, DigestItem, CurrencyId, Moment};
 pub use listen_constants::{time::*, currency::*};
 pub use pallet_listen as listen;
@@ -1042,13 +1040,6 @@ parameter_types! {
 	pub const MinVestedTransfer: Balance = 100 * DOLLARS;
 }
 
-impl pallet_vesting::Config for Runtime {
-	type Event = Event;
-	type Currency = Balances;
-	type BlockNumberToBalance = ConvertInto;
-	type MinVestedTransfer = MinVestedTransfer;
-	type WeightInfo = pallet_vesting::weights::SubstrateWeight<Runtime>;
-}
 
 impl pallet_mmr::Config for Runtime {
 	const INDEXING_PREFIX: &'static [u8] = b"mmr";
@@ -1325,7 +1316,7 @@ impl pallet_dao::Config<RoomCollective> for Runtime {
 }
 
 
-impl pallet_listen_vesting::Config for Runtime {
+impl pallet_vesting::Config for Runtime {
 	type Event = Event;
 	type Currency = Balances;
 	type BlockNumberToBalance = ConvertInto;
@@ -1367,7 +1358,6 @@ construct_runtime!(
 		Identity: pallet_identity::{Pallet, Call, Storage, Event<T>},
 		Society: pallet_society::{Pallet, Call, Storage, Event<T>, Config<T>},
 		Recovery: pallet_recovery::{Pallet, Call, Storage, Event<T>},
-		Vesting: pallet_vesting::{Pallet, Call, Storage, Event<T>, Config<T>},
 		Scheduler: pallet_scheduler::{Pallet, Call, Storage, Event<T>},
 		Proxy: pallet_proxy::{Pallet, Call, Storage, Event<T>},
 		Multisig: pallet_multisig::{Pallet, Call, Storage, Event<T>},
@@ -1381,12 +1371,12 @@ construct_runtime!(
 		TransactionStorage: pallet_transaction_storage::{Pallet, Call, Storage, Inherent, Config<T>, Event<T>},
 		// **************************************
 		Listen: listen::{Pallet, Storage, Call, Event<T>},
-		ListenVesting: pallet_listen_vesting::{Pallet, Call, Storage, Event<T>, Config<T>},
 		Tokens: orml_tokens::{Pallet, Config<T>, Storage, Event<T>},
 		Currencies: listen_currencies::{Pallet, Event<T>, Call, Storage},
 		Nicks: pallet_nicks::{Pallet, Storage, Call, Event<T>},
 		Dao: pallet_dao::<Instance1>::{Pallet, Call, Storage, Origin<T>, Event<T>},
 		RoomTreasury: pallet_room_treasury::{Pallet, Storage, Call, Event<T>},
+		Vesting: pallet_vesting::{Pallet, Call, Storage, Event<T>, Config<T>},
 	}
 );
 

@@ -87,14 +87,12 @@ pallet-transaction-payment = {  default-features = false, git = 'https://github.
 pallet-transaction-payment-rpc-runtime-api = {  default-features = false, git = 'https://github.com/paritytech/substrate', branch = 'polkadot-v0.9.8' }
 pallet-transaction-storage = {  default-features = false, git = 'https://github.com/paritytech/substrate', branch = 'polkadot-v0.9.8' }
 pallet-uniques = {  default-features = false, git = 'https://github.com/paritytech/substrate', branch = 'polkadot-v0.9.8' }
-pallet-vesting = {  default-features = false, git = 'https://github.com/paritytech/substrate', branch = 'polkadot-v0.9.8' }
-
 max-encoded-len = {  default-features = false, git = 'https://github.com/paritytech/substrate', branch = 'polkadot-v0.9.8', features = [ "derive" ] }
 
 # listen-parachain
 listen-primitives = { path = '../common/primitives', version = '1.0.0', default-features = false }
 pallet-listen = { path = '../common/pallets/listen', default-features = false, version = '1.0.0' }
-pallet-listen-vesting = { path = '../common/pallets/listen-vesting', default-features = false, version = '1.0.0' }
+pallet-vesting = { path = '../common/pallets/vesting', default-features = false, version = '3.0.0' }
 pallet-nicks = { path = '../common/pallets/nicks', default-features = false, version = '1.0.0' }
 pallet-dao = { path = '../common/pallets/dao', default-features = false, version = '3.0.0' }
 pallet-room-treasury = { path = '../common/pallets/room-treasury', default-features = false, version = '1.0.0' }
@@ -183,7 +181,6 @@ std = [
 	"max-encoded-len/std",
 
 	"pallet-listen/std",
-	"pallet-listen-vesting/std",
 	"orml-traits/std",
 	"orml-tokens/std",
 	"pallet-nicks/std",
@@ -227,7 +224,7 @@ runtime-benchmarks = [
 	"pallet-treasury/runtime-benchmarks",
 	"pallet-utility/runtime-benchmarks",
 	"pallet-uniques/runtime-benchmarks",
-	"pallet-vesting/runtime-benchmarks",
+#	"pallet-vesting/runtime-benchmarks",
 	"pallet-offences-benchmarking",
 	"pallet-session-benchmarking",
 	"frame-system-benchmarking",
@@ -271,7 +268,7 @@ try-runtime = [
 	"pallet-society/try-runtime",
 	"pallet-recovery/try-runtime",
 	"pallet-uniques/try-runtime",
-	"pallet-vesting/try-runtime",
+#	"pallet-vesting/try-runtime",
 	"pallet-gilt/try-runtime",
 ]
 # Make contract callable functions marked as __unstable__ available. Do not enable

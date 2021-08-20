@@ -29,6 +29,7 @@
       <sourceFolder url="file://$MODULE_DIR$/common/pallets/listen-vesting/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/common/pallets/room-collective/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/common/pallets/room-treasury/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/common/pallets/vesting/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.6 (VENV)" jdkType="Python SDK" />
